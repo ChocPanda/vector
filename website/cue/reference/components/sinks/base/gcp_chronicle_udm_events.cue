@@ -1,6 +1,6 @@
 package metadata
 
-base: components: sinks: gcp_chronicle_unstructured: configuration: {
+base: components: sinks: gcp_chronicle_udm_events: configuration: {
 	acknowledgements: {
 		description: """
 			Controls how acknowledgements are handled for this sink.
@@ -461,44 +461,6 @@ base: components: sinks: gcp_chronicle_unstructured: configuration: {
 		description: "The endpoint to send data to."
 		required:    false
 		type: string: examples: ["127.0.0.1:8080", "example.com:12345"]
-	}
-	labels: {
-		description: "A set of labels that are attached to each batch of events."
-		required:    false
-		type: object: {
-			examples: [{
-				source: "vector"
-				tenant: "marketing"
-			}]
-			options: "*": {
-				description: "A Chronicle label."
-				required:    true
-				type: string: {}
-			}
-		}
-	}
-	log_type: {
-		description: """
-			The type of log entries in a request.
-
-			This must be one of the [supported log types][unstructured_log_types_doc], otherwise
-			Chronicle rejects the entry with an error.
-
-			[unstructured_log_types_doc]: https://cloud.google.com/chronicle/docs/ingestion/parser-list/supported-default-parsers
-			"""
-		required: true
-		type: string: {
-			examples: ["WINDOWS_DNS", "{{ log_type }}"]
-			syntax: "template"
-		}
-	}
-	namespace: {
-		description: "User-configured environment namespace to identify the data domain the logs originated from."
-		required:    false
-		type: string: {
-			examples: ["production", "production-{{ namespace }}"]
-			syntax: "template"
-		}
 	}
 	region: {
 		description: "The GCP region to use."
