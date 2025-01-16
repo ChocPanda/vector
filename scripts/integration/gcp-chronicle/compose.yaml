@@ -2,7 +2,8 @@ version: '3'
 
 services:
   chronicle-emulator:
-    image: chronicle-emulator:snapshot
+    image: ghcr.io/chocpanda/chronicle-emulator:main
+    # image: plork/chronicle-emulator
     ports:
     - 3000:3000
     volumes:
